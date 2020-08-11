@@ -156,6 +156,6 @@ victor ops
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
+## Acks
 * Hat tip to the guys at Rancher for k3s.
 
