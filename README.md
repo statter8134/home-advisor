@@ -138,12 +138,13 @@ This is the output...
 {"data":"RESTful with two Endpoint /users and /notes - v1.0.0"}
 ```
 
-### ssh and view the app
+ssh port forward and view the app
 
 ```
-ssh -L 12345:127.0.0.01:80 ubuntu@35.167.59.248
-```
+ssh -L 12345:127.0.0.01:80 ubuntu@[PUBLIC_IP_OF_SERVER]
+....
 
+```
 
 
 -----------
@@ -192,12 +193,12 @@ dashboard-admin-sa-token-XXXX   kubernetes.io/service-account-token   3      38s
 ```
 
  
-Get token:
+Get token using the using your XXX value:
 ```
 kubectl describe secret dashboard-admin-sa-token-wwwtd
 ```
  
-Cut/paste return token into dashboard
+Cut/paste return token into dashboard. You will see the 2 nodes registered and have access to all the features of the kubernetes dashboard
 
 
 
@@ -206,19 +207,26 @@ Cut/paste return token into dashboard
 **[Datadog](https://https://www.datadoghq.com/dg/monitor/kubernetes-monitoring-benefits/?utm_source=Advertisement&utm_medium=GoogleAds&utm_campaign=GoogleAds-KubernetesBroad&utm_keyword=%2Bkubernetes&utm_matchtype=b&gclid=Cj0KCQjwg8n5BRCdARIsALxKb95YjXuQgtpj2tcHJMJlDJ8WDSTkKz14Sn3vAjzo52-4BEywFTxdfpkaAtLSEALw_wcB)**
 chosen due broad offering. The most expensive option but superior in the authors opinion.
 
+NOTE: not installed due to time constraints, but can easily be done using the **[kubernetes monitoring installation instructions](https://www.datadoghq.com/blog/monitor-kubernetes-docker/)**
+
+_*Why Datadog?*_
+
+ 
 
 ### Alerting
 **[Victor Ops](https://victorops.com/)** used for multi-tier alerting to on-call teams.
 
+Monitoring tool justification:
+
 
 ## Authors
 
-* **Rhys Campbell ** - *Initial work* - 
+Rhys Campbell - *Initial work* - 
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
-* Hat tip to the guys at Rancher for k3s. It's awesome
+Hat tip to the guys at Rancher for k3s. It's awesome!
 
