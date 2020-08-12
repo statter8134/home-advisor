@@ -88,6 +88,9 @@ resource "aws_instance" "server" {
   tags = {
     Name = "${var.resource_prefix}-k3s-server"
   }
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.server.public_ip} > server-ip.txt"
+  }
 }
 
 resource "aws_instance" "worker" {
@@ -99,5 +102,8 @@ resource "aws_instance" "worker" {
   vpc_security_group_ids = ["${aws_security_group.instances.id}"]
   tags = {
     Name = "${var.resource_prefix}-k3s-worker"
+  }
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.worker.public_ip} > client-ip.txt"
   }
 }
