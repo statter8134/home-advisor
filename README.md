@@ -53,13 +53,13 @@ var.vpc_id
 Connect to both nodes, unminimize both nodes, and reboot
 ```
 ssh ubuntu@[IP_ADDR]
-
-sudo unminimize;reboot
+....
+sudo unminimize;sudo reboot
 ```
  
 ### 2) Connect the nodes together
  
-1. For each node/vm, login and become root 
+1. For each node/vm, ssh in and become root 
 ```sudo su -```
  
 2. Get the shared secret key used to connect nodes to a cluster. ssh into "server" and copy the contents of: 
@@ -69,7 +69,7 @@ sudo unminimize;reboot
  
 4) On the worker, run ```/root/ks3.sh```
  
-### 3) Verify the cluster is up and nodes are connected. On the server...
+### 3) (Optional)  Verify the cluster is up and nodes are connected. On the server...
 
 ```
 systemctl status k3s
@@ -88,12 +88,7 @@ kubectl get pods -A -o wide
  
 ### 4) (Optional) Verify the core endpoints are up 
  
-NOTE: In the interests of time (and security) external access into the cluster endpoints is done using ssh port forward 
- 
-ssh port forward
-```ssh -L 12345:127.0.0.1:6443 ubuntu@[PUBLIC_IP_OF_SERVER]```
- 
-Run...
+As root run...
 ```
 kubectl cluster-info
 ```
@@ -128,17 +123,17 @@ Check ingress (its show your IP), service and pods:
 kubectl get ingress,svc,pods -n retail-project-dev
 ```
  
-Test the cluster locally on the servers
+Test the app locally on the server node:
 ```
-curl -X GET http://localhost
+curl -X GET http://localhost:80
 ```
  
-This is the output...
+Expected output...
 ```
 {"data":"RESTful with two Endpoint /users and /notes - v1.0.0"}
 ```
 
-ssh port forward and view the app
+ssh port forward and view the app via your browser:
 
 ```
 ssh -L 12345:127.0.0.01:80 ubuntu@[PUBLIC_IP_OF_SERVER]
@@ -153,7 +148,7 @@ http://127.0.0.1:12345
 ### Cluster-level monitoring / management
 **[Kubernetes Dashboard](https://github.com/kubernetes/dashboard)** chosen for cluster management
 
-Install Kubernetes dashboard
+Install Kubernetes dashboard on the server node. Log in to the server as root:
 ```
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
