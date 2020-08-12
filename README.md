@@ -151,7 +151,7 @@ http://127.0.0.1:12345
 
 ## Monitoring 
 ### Cluster-level monitoring / management
-Chose to use kubernetes dashboard for cluster management
+**[Kubernetes Dashboard](https://github.com/kubernetes/dashboard)** chosen for cluster management
 
 Install Kubernetes dashboard
 ```
@@ -204,7 +204,7 @@ _*Why Kubernetes Dashboard?*_
 
 Pro's:
 
-- Ubiquitous tool for k8s and k3s 
+- Ubiquitous general purpose management tool for k8s and k3s 
 - Affords management and basic monitoring
 
 Cons:
@@ -214,8 +214,8 @@ N/A
 
 ### Application-level monitoring
 
-**[Datadog](https://https://www.datadoghq.com/dg/monitor/kubernetes-monitoring-benefits/?utm_source=Advertisement&utm_medium=GoogleAds&utm_campaign=GoogleAds-KubernetesBroad&utm_keyword=%2Bkubernetes&utm_matchtype=b&gclid=Cj0KCQjwg8n5BRCdARIsALxKb95YjXuQgtpj2tcHJMJlDJ8WDSTkKz14Sn3vAjzo52-4BEywFTxdfpkaAtLSEALw_wcB)**
-chosen due broad offering. The most expensive option but superior in the authors opinion.
+**[Datadog](https://www.datadoghq.com/)**
+chosen.
 
 NOTE: not installed due to time constraints, but can easily be done using the **[kubernetes monitoring installation instructions](https://www.datadoghq.com/blog/monitor-kubernetes-docker/)**
 
