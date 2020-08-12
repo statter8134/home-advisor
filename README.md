@@ -120,12 +120,12 @@ curl -X GET -L https://gist.githubusercontent.com/fransafu/4075cdcaf2283ca5650e7
  
 Create ingress, service, and deployment:
 ```
-k3s kubectl apply -f simple-rest-golang.yaml
+kubectl apply -f simple-rest-golang.yaml
 ```
  
 Check ingress (its show your IP), service and pods:
 ```
-k3s kubectl get ingress,svc,pods -n retail-project-dev
+kubectl get ingress,svc,pods -n retail-project-dev
 ```
  
 Test the cluster locally on the servers
@@ -143,7 +143,7 @@ ssh port forward and view the app
 ```
 ssh -L 12345:127.0.0.01:80 ubuntu@[PUBLIC_IP_OF_SERVER]
 ....
-
+http://127.0.0.1:12345
 ```
 
 
@@ -200,6 +200,16 @@ kubectl describe secret dashboard-admin-sa-token-wwwtd
  
 Cut/paste return token into dashboard. You will see the 2 nodes registered and have access to all the features of the kubernetes dashboard
 
+_*Why Kubernetes Dashboard?*_
+
+Pro's:
+
+- Ubiquitous tool for k8s and k3s 
+- Affords management and basic monitoring
+
+Cons:
+
+N/A
 
 
 ### Application-level monitoring
@@ -211,12 +221,24 @@ NOTE: not installed due to time constraints, but can easily be done using the **
 
 _*Why Datadog?*_
 
+Pro's:
+
+- Datadog provides node-level AND cluster level and  application level metrics. 
+- Comprehensive tracing data is available
+Clean UI
+- Lightweight agent that's easy to install into the cluster
+- Option to install a kubernetes 
+- Autodiscovery
+- Can ingest custom metrics 
+
+Cons:
+
+Cost - $15 / node for the basics
+
  
 
 ### Alerting
 **[Victor Ops](https://victorops.com/)** used for multi-tier alerting to on-call teams.
-
-Monitoring tool justification:
 
 
 ## Authors
