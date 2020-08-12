@@ -81,7 +81,7 @@ resource "aws_key_pair" "deployer" {
 resource "aws_instance" "server" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.ec2_instance_type
-  user_data = file("cloud-config-server.yml")
+  user_data = file("config-server.yml")
 #  key_name = "${var.ssh_keypair}"
   key_name = "deployer-key"
   vpc_security_group_ids = ["${aws_security_group.instances.id}"]
@@ -96,7 +96,7 @@ resource "aws_instance" "server" {
 resource "aws_instance" "worker" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.ec2_instance_type
-  user_data = file("cloud-config-worker.yml")
+  user_data = file("config-worker.yml")
 #  key_name = "${var.ssh_keypair}"
   key_name = "deployer-key"
   vpc_security_group_ids = ["${aws_security_group.instances.id}"]
