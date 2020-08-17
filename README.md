@@ -194,8 +194,8 @@ kubectl describe secret dashboard-admin-sa-token-XXXX
 Cut/paste return token into dashboard. You will see the 2 nodes registered and have access to all the features of the kubernetes dashboard
 
 ### Other Options
-- Prometheus + Graphana - Second choice if the cost of $15/node for Datadog monitoring is not acceptable. 
-- Again, a comprehensive list of OSS options can be found **[here](https://techbeacon.com/enterprise-it/9-top-open-source-tools-monitoring-kubernetes)**
+- Prometheus + Graphana - Second choice if the cost of $15/node for Datadog monitoring is not acceptable. The easiest way to install and configure this solution might be via **[rio](https://github.com/rancher/rio)**, the microPaaS offering from Rancher. The install script is added to this repo for completeness. I would look into rio in more detail since it offers appealing support for deployment automation to the cluster with hooks into github that can trigger a deploy on code push
+- Again, a comprehensive list of other OSS options can be found **[here](https://techbeacon.com/enterprise-it/9-top-open-source-tools-monitoring-kubernetes)** but are not installed due to time constraints. 
 
 
 
