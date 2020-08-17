@@ -126,9 +126,24 @@ http://127.0.0.1:12345
 
 -----------
 
-## Monitoring
-### Cluster-level monitoring / management
-**[Kubernetes Dashboard](https://github.com/kubernetes/dashboard)** chosen.
+## Monitoring/Observability - Commercial option
+_TLDR - this would be my first choice for monitoring any production kubernetes cluster_
+
+Without knowing the specifics of the production cluster (size, composition etc.) and ignoring cost, I would select Datadog as my first choice for Kubernetes monitoring, APM and tracing tool of choice. Datadog balances ease of install, great support and multiple levels of monitoring and a clean RBAC dashboard, with hooks for pushing alerts via, for example, VictorOps. 
+
+
+**[Datadog Install Instructions](https://www.datadoghq.com/blog/monitoring-kubernetes-with-datadog/)**
+
+
+
+## Monitoring/Observability -  OSS options
+
+A great summary of open source options can be found **[here](https://techbeacon.com/enterprise-it/9-top-open-source-tools-monitoring-kubernetes)**.  
+
+**NOTE**: Only the basic but ubiquitous kubernetes dashboard has been installed as an illustration of OSS options. Details below:
+
+
+### Kubernetes Dashboard
 
 Install Kubernetes dashboard on the server node. Log in to the server as root:
 ```
@@ -178,41 +193,9 @@ kubectl describe secret dashboard-admin-sa-token-XXXX
 
 Cut/paste return token into dashboard. You will see the 2 nodes registered and have access to all the features of the kubernetes dashboard
 
-#### _Why Kubernetes Dashboard?_
-
-
-Pro's:
-
-- Ubiquitous general purpose management tool for k8s and k3s
-- Affords management and basic monitoring
-
-Cons:
-
-N/A
-
-
-### Application-level monitoring
-
-**[Datadog](https://www.datadoghq.com/)**
-chosen.
-
-NOTE: not installed due to time constraints, but can easily be done using the **[kubernetes monitoring installation instructions](https://www.datadoghq.com/blog/monitor-kubernetes-docker/)**
-
-#### _Why Datadog?_
-
-Pro's:
-
-- Datadog provides node-level AND cluster level and  application level metrics.
-- Comprehensive tracing data is available
-Clean UI
-- Lightweight agent that's easy to install into the cluster
-- Option to install a kubernetes
-- Autodiscovery
-- Can ingest custom metrics
-
-Cons:
-
-Cost - $15 / node for the basics
+### Other Options
+- Prometheus + Graphana - Second choice if the cost of $15/node for Datadog monitoring is not acceptable. 
+- Again, a comprehensive list of OSS options can be found **[here](https://techbeacon.com/enterprise-it/9-top-open-source-tools-monitoring-kubernetes)**
 
 
 
@@ -224,11 +207,11 @@ Used for multi-tier alerting to on-call teams.
 
 ## Authors
 
-Rhys Campbell - *Initial work* -
+Rhys Campbell - *Initial work*
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
-Hat tip to the guys at Rancher for k3s. It's awesome!
+Hat tip to the guys at Rancher for k3s - it's awesome!
