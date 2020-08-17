@@ -4,6 +4,11 @@ write_files:
     content: Y3VybCAtc2ZMIGh0dHBzOi8vZ2V0Lmszcy5pbyB8IEszU19VUkw9aHR0cHM6Ly9leGFtcGxlLXVybDo2NDQzIEszU19UT0tFTj1YWFggc2ggLQo=
     owner: root:root
     path: /root/k3s.sh
-    permissions: '0644'
+    permissions: '0755'
+-   encoding: b64
+    content: a3ViZWN0bCBjcmVhdGUgbmFtZXNwYWNlIHJldGFpbC1wcm9qZWN0LWRldgpzbGVlcCAxCmN1cmwgLVggR0VUIC1MIGh0dHBzOi8vZ2lzdC5naXRodWJ1c2VyY29udGVudC5jb20vZnJhbnNhZnUvNDA3NWNkY2FmMjI4M2NhNTY1MGU3MWM3ZmQ4MzM1Y2IvcmF3LzE5ZDdjZmEwZjgyZjFiNjZhZjZlMzkzODkwNzNiY2IwMTA4YzQ5NGMvc2ltcGxlLXJlc3QtZ29sYW5nLnlhbWwgPiBzaW1wbGUtcmVzdC1nb2xhbmcueWFtbApzbGVlcCAxCmt1YmVjdGwgYXBwbHkgLWYgc2ltcGxlLXJlc3QtZ29sYW5nLnlhbWwKc2xlZXAgMQprdWJlY3RsIGdldCBpbmdyZXNzLHN2Yyxwb2RzIC1uIHJldGFpbC1wcm9qZWN0LWRldgoK
+    owner: root:root
+    path: /root/app_install.sh
+    permissions: '0755'
 runcmd:
 final_message: "The system is finally up, after $UPTIME seconds"

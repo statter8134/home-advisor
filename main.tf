@@ -7,13 +7,10 @@ variable "ssh_keypair" {
 }
 
 variable "resource_prefix" {
-  
 }
-
 variable "ec2_instance_type" {
-  default = "t2.medium"
+  default = "t2.micro"
 }
-
 
 resource "aws_security_group" "instances" {
   name        = "k3s-${var.resource_prefix}"
@@ -62,7 +59,7 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["ubuntu-minimal/images/*/ubuntu-bionic-18.04-*"] # Ubuntu Minimal Bionic
+    values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-*"] # Ubuntu Bionic
     }
 
   filter {
@@ -82,7 +79,6 @@ resource "aws_instance" "server" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.ec2_instance_type
   user_data = file("config-server.yml")
-#  key_name = "${var.ssh_keypair}"
   key_name = "deployer-key"
   vpc_security_group_ids = ["${aws_security_group.instances.id}"]
   tags = {
@@ -97,7 +93,6 @@ resource "aws_instance" "worker" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.ec2_instance_type
   user_data = file("config-worker.yml")
-#  key_name = "${var.ssh_keypair}"
   key_name = "deployer-key"
   vpc_security_group_ids = ["${aws_security_group.instances.id}"]
   tags = {
@@ -107,3 +102,4 @@ resource "aws_instance" "worker" {
     command = "echo ${aws_instance.worker.public_ip} > client-ip.txt"
   }
 }
+
